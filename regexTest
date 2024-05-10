@@ -16,7 +16,8 @@ for (root,dirs,files) in os.walk(f"{os.curdir}\ds"):
                 if serial == serial2 and testResult2 == testResult and middle != middle2:
                     duplicates.append(serial)
 duplicatesSet = set(duplicates)
-if duplicatesSet == []:
+
+if duplicates == []:
     print("No Double Tests!")
 for (duplicate) in duplicatesSet:
     print(f"{duplicate}")
