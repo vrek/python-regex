@@ -1,0 +1,22 @@
+import os
+
+firstSerial = input("Whats the first serial?")
+lastSerial = input("Whats the last serial?")
+duplicates = []
+for (root,dirs,files) in os.walk(f"{os.curdir}\ds"):
+    for file in files:
+        serial = file.split("_")[0]
+        middle = file.split("_")[1]
+        testResult = file.split("_")[2].split(".")[0]
+        if testResult=="[p]" and serial >= firstSerial and serial <= lastSerial:
+            for file2 in files:
+                serial2 = file2.split("_")[0]
+                middle2 = file2.split("_")[1]
+                testResult2 = file2.split("_")[2].split(".")[0]
+                if serial == serial2 and testResult2 == testResult and middle != middle2:
+                    duplicates.append(serial)
+duplicatesSet = set(duplicates)
+if duplicatesSet == []:
+    print("No Double Tests!")
+for (duplicate) in duplicatesSet:
+    print(f"{duplicate}")
